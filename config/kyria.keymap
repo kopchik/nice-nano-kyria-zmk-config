@@ -1,5 +1,12 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define DEFAULT 0
+//#define LOWER   1
+//#define RAISE   2
+#define CONF 1
+
 
 / {
 	keymap {
@@ -12,13 +19,29 @@
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
 //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
 			bindings = <
-	&kp GRAVE   &kp Q &kp W &kp F &kp P &kp B                                                &kp J &kp L  &kp U     &kp Y   &kp P    &kp BSLH
-	&kp TAB   &kp A &kp R &kp S &kp T &kp G                                                &kp M &kp N  &kp E     &kp I   &kp SEMI &kp SQT
-	&kp LSHFT &kp Z &kp X &kp C &kp D &kp V &kp LSHFT &kp LSHFT        &kp LSHFT &kp LSHFT &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
+	&kp GRAVE   &kp Q &kp W &kp F &kp P &kp B                                      &kp J &kp L  &kp U     &kp Y   &kp P    &kp BSLH
+	&kp TAB   &kp A &kp R &kp S &kp T &kp G                                        &kp M &kp N  &kp E     &kp I   &kp SEMI &kp SQT
+	&kp LSHFT &kp Z &kp X &kp C &kp D &kp V &kp LSHFT &kp LSHFT        &mo CONF  &kp LSHFT &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
 	                 &kp LGUI &kp DEL &kp RET &kp SPACE &kp ESC        &kp RET  &kp SPACE  &kp TAB &kp BSPC &kp RALT
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
 		};
+		
+		configuration_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  BT_C |     |     |      |      |OUTUSB|                                          | NMOD | BL_ON | E_ON  | HUI  |  BRI  | SAI  |
+// |  BT_4 | BT_3| BT_2| BT_1 | BT_0 |OUT_BL|                                          | PMOD | BL_OFF| EOFF  | HUD  |  BRD  | SAD  |
+// |       |     |     |      |      |      |         |         |  |         |         |      |       |       |      |       |      |
+//                     |      |      |      |         |         |  |         |         |      |       |       |
+			bindings = <
+	&none &bt BT_SEL 0 &bt BT_SEL 1 &none &none &out OUT_USB  &out OUT_BLE  &none &ext_power EP_ON  &none &none &none
+	&none &none &none &none &none &none                             &none &none &none &none &none &none
+	&none        &none        &none        &none        &none        &none        &trans &trans &trans &trans &none           &none           &none             &none           &none           &none
+										   &trans       &trans       &trans       &trans &trans &trans &trans &trans          &trans          &trans
+			>;
+		};
+		
+		
 	};
 };
