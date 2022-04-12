@@ -7,7 +7,7 @@
 #define DEFAULT 0
 //#define LOWER   1
 //#define RAISE   2
-#define CONF 1
+#define SECOND 1
 
 
 / {
@@ -24,7 +24,7 @@
 	&mt GRAVE ESC &kp Q &kp W &kp F &kp P &kp B                                      &kp J &kp L  &kp U     &kp Y   &kp P    &kp BSLH
 	&kp TAB   &kp A &kp R &kp S &kp T &kp G                                        &kp M &kp N  &kp E     &kp I   &kp O &kp SQT
 	&kp LSHFT &kp Z &kp X &kp C &kp D &kp V &kp LSHFT &kp LSHFT        &mo CONF  &kp LSHFT &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-	                 &kp LGUI &kp BSPC &kp RET &kp SPACE &kp ESC        &kp RET  &kp SPACE  &kp TAB &kp DEL &kp RALT
+	                 &kp LGUI &kp BSPC &kp RET &kp SPACE &kp ESC        &kp RET  &mo SECOND  &kp TAB &kp DEL &kp RALT
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -32,9 +32,9 @@
 		
 		configuration_layer {
 			bindings = <
-	&none &bt BT_SEL 0 &bt BT_SEL 1 &none &none &out OUT_USB                       &out OUT_BLE &none &none  &none &none &none
-	&none &none &none &none &none &none                                            &none  &none   &none   &none   &none  &none
-	&none &none &none &none &none &none &trans &trans           &trans   &trans    &none  &none   &none   &none   &none &none
+	&none &bt BT_SEL 0 &bt BT_SEL 1 &none &none &out OUT_USB                       &out OUT_BLE &kp HOME &kp UP  &kp END &none &none
+	&none &none &none &none &none &none                                            &none  &kp LEFT   &kp DOWN   &kp RIGHT   &none  &none
+	&none &none &none &none &none &none &trans &trans           &trans   &trans    &none  &PG_DOWN   &none   &kp PG_UP   &none &none
 	                  &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans
 			>;
 		};
